@@ -19,8 +19,7 @@ else {
 	<title>V-Met</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Javascript -->
-
-	<script href="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script href="assets/js/bootstrap.js"></script>
 	<script href="assets/js/vmet.js"></script>
 
@@ -83,4 +82,4 @@ else {
 
 
 	<div class="wrapper">
-		<script>console.log('hello there '+ $userLoggedIn)</script>
+		

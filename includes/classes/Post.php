@@ -42,7 +42,7 @@ class Post {
 
 	public function loadPostsFriends($data, $limit) {
 
-		$page = $data['page']; 
+		$page = $data["page"]; 
 		$userLoggedIn = $this->user_obj->getUsername();
 
 		if($page == 1) 
@@ -81,8 +81,6 @@ class Post {
 				if($added_by_obj->isClosed()) {
 					continue;
 				}
-
-				
 
 					if($num_iterations++ < $start)
 						continue; 

@@ -8,6 +8,8 @@ if(isset($_POST['post'])){
  
 	$post = new Post($con, $userLoggedIn);
 	$post->submitPost($_POST['post_text'], 'none');
+	
+	
 }
 
 
@@ -44,14 +46,15 @@ if(isset($_POST['post'])){
 
 
 	</div>
-
+	
 	<script>
+		
 	var userLoggedIn = '<?php echo $userLoggedIn; ?>';
 
 	$(document).ready(function() {
 
 		$('#loading').show();
-		alert('hello');
+		
 		//Original ajax request for loading first posts
 		$.ajax({
 			url: "includes/handlers/ajax_load_posts.php",
@@ -94,9 +97,9 @@ if(isset($_POST['post'])){
 
 			return false;
 
-		}); //End (window).scroll(function())
+		}); //End $(window).scroll(function())
 
-
+		
 	});
 
 	</script>
@@ -113,6 +116,7 @@ if(isset($_POST['post'])){
     <a href="tpo.php" >TPO</a><br><br>
 
   </div>
+
   </div>
 
 
