@@ -127,11 +127,11 @@ nav a{
   font-size: 17px;
 
 }
-.post_form input[type='submit']{
+#post_button{
   height: 60px;
-  width: 50px;
+  width: 100px;
   border-radius: 10px;
-  background-color: #3DB6C5;
+  background-color: #1d00c2;
   color: #fff;
   font-family: 'Bellota-BoldItalic',sans-serif;
   text-shadow: #000 2px 2px 1px;
