@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2021 at 08:23 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.1.33
+-- Generation Time: Sep 11, 2021 at 05:54 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `social`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `post_body` text NOT NULL,
+  `posted_by` varchar(60) NOT NULL,
+  `posted_to` varchar(60) NOT NULL,
+  `date_added` datetime NOT NULL,
+  `removed` varchar(3) NOT NULL,
+  `post_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `post_body`, `posted_by`, `posted_to`, `date_added`, `removed`, `post_id`) VALUES
+(1, 'hello', 'karan_desai', 'dhairyashil_desai', '2021-09-11 21:21:09', 'no', 34),
+(2, 'whats up!!', 'karan_desai', 'dhairyashil_desai', '2021-09-11 21:21:26', 'no', 34),
+(3, 'nothing special', 'karan_desai', 'dhairyashil_desai', '2021-09-11 21:21:37', 'no', 34),
+(4, 'welcome then', 'dhairyashil_desai', 'dhairyashil_desai', '2021-09-11 21:23:00', 'no', 35);
 
 -- --------------------------------------------------------
 
@@ -59,23 +84,9 @@ INSERT INTO `posts` (`id`, `body`, `added_by`, `user_to`, `date_added`, `user_cl
 (1, 'caec', 'dhairyashil_desai', 'none', '2021-08-08 17:30:37', 'no', 'no', 0),
 (2, 'evbiaec', 'dhairyashil_desai', 'none', '2021-08-08 17:31:06', 'no', 'no', 0),
 (32, 'bceave', 'dhairyashil_desai', 'none', '2021-08-08 17:31:42', 'no', 'no', 0),
-(33, 'vaeva', 'dhairyashil_desai', 'none', '2021-08-08 17:34:30', 'no', 'no', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `post_comments`
---
-
-CREATE TABLE `post_comments` (
-  `id` int(11) NOT NULL,
-  `post_body` text NOT NULL,
-  `posted_by` varchar(60) NOT NULL,
-  `posted_to` varchar(60) NOT NULL,
-  `date_added` datetime NOT NULL,
-  `removed` varchar(3) NOT NULL,
-  `post_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(33, 'vaeva', 'dhairyashil_desai', 'none', '2021-08-08 17:34:30', 'no', 'no', 0),
+(34, 'hey there karan', 'dhairyashil_desai', 'none', '2021-09-11 21:20:37', 'no', 'no', 0),
+(35, 'new on V-met', 'dhairyashil_desai', 'none', '2021-09-11 21:22:40', 'no', 'no', 0);
 
 -- --------------------------------------------------------
 
@@ -96,7 +107,7 @@ CREATE TABLE `users` (
   `branch` varchar(6) NOT NULL,
   `phone` int(10) NOT NULL,
   `date_of_birth` date NOT NULL,
-  `dont know` text NOT NULL,
+  `friend_array` text NOT NULL,
   `profile_pic` varchar(255) NOT NULL,
   `no_likes` int(11) NOT NULL,
   `num_posts` int(11) NOT NULL,
@@ -107,13 +118,19 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `gr_no`, `first_name`, `last_name`, `username`, `gender`, `email`, `password`, `year`, `branch`, `phone`, `date_of_birth`, `dont know`, `profile_pic`, `no_likes`, `num_posts`, `user_closed`) VALUES
-(1, 1181, 'Dhairyashil', 'Desai', 'dhairyashil_desai', ':\"choi', 'dhairyashil.desai18@vit.edu', '827ccb0eea8a706c4c34a16891f84e7b', 'B.Tech', 'CS', 1123456789, '2021-08-14', ',', 'assets/images/profile_pics/default/head_wet_asphalt.png', 0, 31, 'no'),
-(2, 118122, 'Karan', 'Desai', 'karan_desai', ':\"choi', 'karan.desai18@vit.edu', '827ccb0eea8a706c4c34a16891f84e7b', 'FY', 'CS', 1123456789, '2021-08-18', ',', 'assets/images/profile_pics/default/head_amethyst.png', 0, 0, 'no');
+INSERT INTO `users` (`id`, `gr_no`, `first_name`, `last_name`, `username`, `gender`, `email`, `password`, `year`, `branch`, `phone`, `date_of_birth`, `friend_array`, `profile_pic`, `no_likes`, `num_posts`, `user_closed`) VALUES
+(1, 1181, 'Dhairyashil', 'Desai', 'dhairyashil_desai', ':\"choi', 'dhairyashil.desai18@vit.edu', '827ccb0eea8a706c4c34a16891f84e7b', 'B.Tech', 'CS', 1123456789, '2021-08-14', ',karan_desai,', 'assets/images/profile_pics/default/head_wet_asphalt.png', 0, 33, 'no'),
+(2, 118122, 'Karan', 'Desai', 'karan_desai', ':\"choi', 'karan.desai18@vit.edu', '827ccb0eea8a706c4c34a16891f84e7b', 'FY', 'CS', 1123456789, '2021-08-18', ',dhairyashil_desai,', 'assets/images/profile_pics/default/head_amethyst.png', 0, 0, 'no');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `likes`
@@ -128,12 +145,6 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `post_comments`
---
-ALTER TABLE `post_comments`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -142,6 +153,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -153,13 +170,7 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
---
--- AUTO_INCREMENT for table `post_comments`
---
-ALTER TABLE `post_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `users`
